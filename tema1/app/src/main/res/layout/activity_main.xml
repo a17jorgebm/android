@@ -18,6 +18,7 @@
 
     <Spinner
         android:id="@+id/lisAnimals"
+        android:entries="@array/lista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -25,7 +26,14 @@
         android:id="@+id/btnSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Seleccionar"
         />
+
+    <TextView
+        android:id="@+id/textSeleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
 
 </LinearLayout>
 

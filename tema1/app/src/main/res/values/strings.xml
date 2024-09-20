@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">UD01_02_lista_animales</string>
     <string name="texto">Selecciona un animal</string>
+    <string-array name="lista">
+        <item>Dogs</item>
+        <item>Cats</item>
+        <item>Parrots</item>
+    </string-array>
+    <string name="chiguagua">Chiguagua en ingles</string>
+    <string name="pastor">Aleman pastor</string>
 </resources>
