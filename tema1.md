@@ -71,7 +71,7 @@ E para usalos dentro de un <b>layout</b>, activity_main.xml neste caso:
 
 Non se traballa con px, traballase con `dp`, que axusta os pixeles dependendoda resolucion da pantalla. É parecido ao % de html
 
-android:gravity="center" : centra o contenido do layout ao medio
+android:gravity="center" : centra o contenido de dentro do layout ao medio
 android:layout_gravity="center": centra o layout dentro do contedor no que ta
 
 
@@ -80,3 +80,7 @@ android:layout_gravity="center": centra o layout dentro do contedor no que ta
 val btnSend=findViewById<Button>(R.id.btnSend)
 btnSend.setOnKeyListener();
 ```
+
+
+## Cronometro
+`SystemClock.elapsedRealtime()`: valor do reloj interno de android desde que empezou a ejecutarse a app
