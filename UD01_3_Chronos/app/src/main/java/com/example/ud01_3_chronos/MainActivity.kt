@@ -24,6 +24,38 @@ class MainActivity : AppCompatActivity() {
         outState.putLong(BASE_KEY,chrono.base)
         super.onSaveInstanceState(outState)
     }
+
+    override fun onPause() {
+        if(running){
+            offset=SystemClock.elapsedRealtime()-chrono.base
+            chrono.stop()
+        }
+        super.onPause()
+    }
+
+    override fun onResume() {
+        if (running){
+            chrono.base=SystemClock.elapsedRealtime()-offset
+            chrono.start()
+        }
+        super.onResume()
+    }
+
+    override fun onStop() {
+        if(running){
+            offset=SystemClock.elapsedRealtime()-chrono.base
+            chrono.stop()
+        }
+        super.onStop()
+    }
+
+    override fun onRestart() {
+        if (running){
+            chrono.base=SystemClock.elapsedRealtime()-offset
+            chrono.start()
+        }
+        super.onRestart()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -40,6 +72,8 @@ class MainActivity : AppCompatActivity() {
             if (running){
                 chrono.base=savedInstanceState.getLong("base")
                 chrono.start()
+            }else{
+                chrono.base=SystemClock.elapsedRealtime()-offset
             }
         }
         val btnStart = findViewById<Button>(R.id.btnStart)
