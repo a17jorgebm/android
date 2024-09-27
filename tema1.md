@@ -81,6 +81,14 @@ val btnSend=findViewById<Button>(R.id.btnSend)
 btnSend.setOnKeyListener();
 ```
 
-
 ## Cronometro
 `SystemClock.elapsedRealtime()`: valor do reloj interno de android desde que empezou a ejecutarse a app
+
+# Tema idiomas que empezan a ler desde a dereita
+Dentro do arquivo `AndroidManifest.xml` añadimos:
+````xml
+    <application
+        ...
+        android:supportsRtl="true"
+        ...
+````

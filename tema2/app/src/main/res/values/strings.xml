@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UD02_LinearLayout</string>
+    <string name="enviar">Enviar</string>
+    <string name="mensaje_texto">Message:</string>
+</resources>
