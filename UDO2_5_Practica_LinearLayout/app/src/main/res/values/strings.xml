@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">UDO2_5_Practica_LinearLayout</string>
+    <string name="llamando_a">Llamando a %s</string>
+</resources>

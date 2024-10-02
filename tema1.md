@@ -92,3 +92,10 @@ Dentro do arquivo `AndroidManifest.xml` añadimos:
         android:supportsRtl="true"
         ...
 ````
+
+
+# Layouts
+## LinearLayout
+
+## ConstraintLayout
+É unha dependencia, asi que hai que descargala
