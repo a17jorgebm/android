@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentoPrueba">
+
+    <fragment
+        android:id="@+id/fragmentoPrueba"
+        android:name="com.example.ud03_1_fragentsencrypt.FragmentoPrueba"
+        android:label="FragmentoPrueba" >
+        <action
+            android:id="@+id/action_fragmentoPrueba_to_fragmentMessage"
+            app:destination="@id/fragmentMessage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMessage"
+        android:name="com.example.ud03_1_fragentsencrypt.FragmentMessage"
+        android:label="FragmentMessage" >
+        <action
+            android:id="@+id/action_fragmentMessage_to_encrypted_Message_Fragment"
+            app:destination="@id/encrypted_Message_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/encrypted_Message_Fragment"
+        android:name="com.example.ud03_1_fragentsencrypt.Encrypted_Message_Fragment"
+        android:label="Encrypted_Message_Fragment" />
+</navigation>

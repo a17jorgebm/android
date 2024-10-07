@@ -6,13 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 
 class FragmentMessage : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //inflar el diseño desde el fragmento
+        /*
+        temos que gardar o inflate nunha variable, para poder acceder aos
+        elementos e modificalos antes de devolvela
+            -dado que antes de facer o inflate non temos acceso aos elementos do fragmento
+         */
+        val vista= inflater.inflate(R.layout.fragment_message,container,false);
+
+        val btnStart=vista.findViewById<Button>(R.id.btn_meter_texto)
+        btnStart.setOnClickListener{
+            vista.findNavController().navigate(R.id.action_fragmentMessage_to_encrypted_Message_Fragment)
+        }
+
+        //devolvemos a vista
+        return vista
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message, container, false)
     }
 }
