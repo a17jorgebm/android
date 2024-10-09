@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.ud03_1_fragentsencrypt.FragmentMessageDirections
 
 class FragmentMessage : Fragment() {
     override fun onCreateView(
@@ -23,7 +25,11 @@ class FragmentMessage : Fragment() {
 
         val btnStart=vista.findViewById<Button>(R.id.btn_meter_texto)
         btnStart.setOnClickListener{
-            vista.findNavController().navigate(R.id.action_fragmentMessage_to_encrypted_Message_Fragment)
+            vista.findNavController().navigate(FragmentMessageDirections
+                .actionFragmentMessageToEncryptedMessageFragment(
+                    (vista.findViewById<EditText>
+                        (R.id.fragmentoMessage).text.toString())
+                ))
         }
 
         //devolvemos a vista

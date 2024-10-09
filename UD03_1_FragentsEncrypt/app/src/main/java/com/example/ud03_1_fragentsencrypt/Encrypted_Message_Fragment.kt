@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +35,26 @@ class Encrypted_Message_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_encrypted__message_, container, false)
+        val vista= inflater.inflate(R.layout.fragment_encrypted__message_, container, false)
+        val mensaje=Encrypted_Message_FragmentArgs.fromBundle(requireArguments()).message
+        val mensajeCifrado=cifrarStringCesar(mensaje,3)
+
+        val textoMostrarMensajeCifrado= vista.findViewById<TextView>(R.id.texto_encriptado)
+        textoMostrarMensajeCifrado.text = mensajeCifrado
+
+        return vista
+    }
+
+    fun cifrarStringCesar(text: String, desplazamiento: Int) : String{
+        val cifrado= StringBuilder();
+
+        for (caracter in text){
+            val asciiCaracter=caracter.code
+            val asciiConDesplazamiento=asciiCaracter+desplazamiento
+            val hexadecimalAsciiConDesplazamiento=asciiConDesplazamiento.toString(16)
+            cifrado.append(hexadecimalAsciiConDesplazamiento)
+        }
+        return cifrado.toString()
     }
 
     companion object {
