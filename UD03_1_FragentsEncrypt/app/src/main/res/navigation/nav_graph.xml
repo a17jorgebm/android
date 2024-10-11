@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/encrypted_Message_Fragment"
-        android:name="com.example.ud03_1_fragentsencrypt.Encrypted_Message_Fragment"
+        android:name="com.example.ud03_1_fragentsencrypt.EncryptedMessageFragment"
         android:label="Encrypted_Message_Fragment" >
         <argument
             android:name="message"

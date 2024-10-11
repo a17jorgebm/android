@@ -28,7 +28,7 @@ class FragmentMessage : Fragment() {
             vista.findNavController().navigate(FragmentMessageDirections
                 .actionFragmentMessageToEncryptedMessageFragment(
                     (vista.findViewById<EditText>
-                        (R.id.fragmentoMessage).text.toString())
+                        (R.id.textToEncrypt).text.toString())
                 ))
         }
 
