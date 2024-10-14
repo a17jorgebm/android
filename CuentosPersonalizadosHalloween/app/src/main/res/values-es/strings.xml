@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CuentosPersonalizadosHalloween</string>
+    <string name="introduce_nombre">Introduce tu nombre</string>
+    <string name="introduce_nombre_aqui">Introduce tu nombre aqui</string>
+    <string name="siguiente">Siguiente</string>
+
+    <string name="selecciona_tematica">Selecciona una temática</string>
+    <string name="casa_encantada">Casa encantada</string>
+    <string name="bosque_maldito">Bosque maldito</string>
+    <string name="mansion_misteriosa">Mansión misteriosa</string>
+
+</resources>

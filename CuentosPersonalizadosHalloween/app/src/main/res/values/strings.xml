@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CuentosPersonalizadosHalloween</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="introduce_nombre">Insert your name</string>
+    <string name="introduce_nombre_aqui">Insert your name here</string>
+    <string name="siguiente">Next</string>
+
+    <string name="selecciona_tematica">Select a theme</string>
+    <string name="casa_encantada">Enchanted house</string>
+    <string name="bosque_maldito">Cursed woods</string>
+    <string name="mansion_misteriosa">Misterious mansion</string>
+
 </resources>
