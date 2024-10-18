@@ -7,5 +7,18 @@
     <fragment
         android:id="@+id/nombreFragment"
         android:name="com.example.cuentospersonalizadoshalloween.NombreFragment"
-        android:label="NombreFragment" />
+        android:label="NombreFragment" >
+        <action
+            android:id="@+id/action_nombreFragment_to_seleccionarTematica"
+            app:destination="@id/seleccionarTematica" />
+    </fragment>
+    <fragment
+        android:id="@+id/seleccionarTematica"
+        android:name="com.example.cuentospersonalizadoshalloween.SeleccionarTematica"
+        android:label="SeleccionarTematica"
+        >
+        <argument
+            android:name="nombre_usuario"
+            app:argType="string"/>
+    </fragment>
 </navigation>

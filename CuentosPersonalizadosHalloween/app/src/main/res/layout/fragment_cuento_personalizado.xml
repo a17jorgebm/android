@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+    <TextView
+        android:id="@+id/tv_titulo_fragmento_cuento_personalizado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre cuento"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#fd9b2e"
+        android:layout_marginBottom="15dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/casa"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="15dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_cuento_fragmento_cuento_personalizado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuentoNombre cuento"
+        
+        />
+
+</LinearLayout>

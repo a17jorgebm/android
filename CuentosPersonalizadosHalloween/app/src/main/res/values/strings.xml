@@ -9,5 +9,7 @@
     <string name="casa_encantada">Enchanted house</string>
     <string name="bosque_maldito">Cursed woods</string>
     <string name="mansion_misteriosa">Misterious mansion</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

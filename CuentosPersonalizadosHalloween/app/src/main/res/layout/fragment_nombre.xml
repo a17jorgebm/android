@@ -29,10 +29,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
+        android:inputType="text"
         android:hint="@string/introduce_nombre_aqui"
         />
 
     <Button
+        android:id="@+id/btn_next_fragment_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
