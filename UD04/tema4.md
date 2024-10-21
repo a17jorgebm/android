@@ -42,3 +42,21 @@ Non vamos usar a ActionBar por defecto do sistema, usaremos a de Material desing
 val actionBar=findViewById<MaterialToolbar>(R.id.materialToolBar)
 setSupportActionBar(actionBar) //de esta maneira, facemos esa barra a por defecto da aplicacion
 ```
+
+### Menu na barra de navegación
+Pa crear: `res -> click dereito -> new -> Android resource file -> Resource Type (Menu)`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/helpFragment"
+        android:icon="@android:drawable/ic_menu_help"
+        android:title="@string/help"
+        app:showAsAction="always"
+        />
+</menu>
+```
+* `app:showAsAction="always"`: fai que o item sexa un boton independente no menú (non esta dentro dos 3 puntitos)
+  * `android:icon="@android:drawable/ic_menu_help"`: se ten a propiedad de arriba pode
