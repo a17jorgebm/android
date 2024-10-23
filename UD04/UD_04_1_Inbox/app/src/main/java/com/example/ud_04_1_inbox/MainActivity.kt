@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +28,15 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val actionBar=findViewById<MaterialToolbar>(R.id.materialToolBar)
+        setSupportActionBar(actionBar)
         val navegadorFragmentos= supportFragmentManager.findFragmentById(R.id.container_fragment) as NavHostFragment
-        actionBar.setupWithNavController(navegadorFragmentos.navController)
-        setSupportActionBar(actionBar) //de esta maneira, facemos esa barra a por defecto da aplicacion
+        val navController= navegadorFragmentos.navController
+        var appBarConf=  AppBarConfiguration.Builder(navController.graph).build()
+        actionBar.setupWithNavController(navController, appBarConf)
+
+        //de esta maneira, facemos esa barra a por defecto da aplicacion
+        val actionBarBottom=findViewById<BottomNavigationView>(R.id.botton_navigation)
+        actionBarBottom.setupWithNavController(navController)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
