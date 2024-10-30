@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UD05_1_JustIt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tipo">Que tipo de comida quieres</string>
+
+</resources>
