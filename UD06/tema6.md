@@ -1,3 +1,4 @@
+# Binding
 ## Importacion
 Hai que importar, dentro do gradle de app:
 ```kts
@@ -40,3 +41,8 @@ chrono = binding.chrTemporizador
 ```
 
 ## Ejemplo de uso en fragmento
+esta no proyecto de chronos tamen
+
+
+
+# 
