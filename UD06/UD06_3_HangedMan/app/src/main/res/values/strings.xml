@@ -5,6 +5,7 @@
 
     <string name="check">Check letter</string>
     <string name="insert_letter">Insert a letter</string>
+    <string name="remaining_lives">Remaining lifes: %d</string>
 
     <string name="match_won">You won!</string>
     <string name="match_lost">You lost!</string>
