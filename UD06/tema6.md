@@ -45,4 +45,14 @@ esta no proyecto de chronos tamen
 
 
 
-# 
+# Model
+para compartir datos entre vistas, crease unha clase de tipo `ViewModel`
+
+
+# LiveData
+## Importacion
+```kotlin
+implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7")
+```
+Para que os textos da vista se actualicen automaticamente co modelo
+

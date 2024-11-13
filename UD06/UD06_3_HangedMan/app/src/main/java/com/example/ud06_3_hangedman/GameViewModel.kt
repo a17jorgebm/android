@@ -4,14 +4,14 @@ import androidx.lifecycle.ViewModel
 
 class GameViewModel : ViewModel() {
     val words= listOf("Calamar","Android","Caballo")
-    var targetWord = words.random().uppercase()
-
-    var targetWordHidden=""
+    var targetWord: String;
+    var targetWordHidden: String
     var lives=7
 
     //cousas raras con esto, non me pon o espacio
     init {
-        targetWordHidden = targetWord.map { "_" }.joinToString(" ")
+        this.targetWord = words.random().uppercase()
+        this.targetWordHidden = targetWord.map { "_" }.joinToString(" ")
     }
     fun showTargetWordHidden(charAttempt: Char = ' '):String {
         targetWordHidden = targetWord

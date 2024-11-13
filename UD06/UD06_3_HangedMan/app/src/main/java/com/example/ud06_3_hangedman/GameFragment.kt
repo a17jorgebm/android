@@ -38,6 +38,10 @@ class GameFragment : Fragment() {
         return vista
     }
 
+    fun play(){
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding=null
