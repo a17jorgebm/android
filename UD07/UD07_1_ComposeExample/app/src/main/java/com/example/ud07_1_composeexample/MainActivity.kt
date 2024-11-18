@@ -6,15 +6,22 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -30,6 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.pm.ShortcutInfoCompat.Surface
 import com.example.ud07_1_composeexample.ui.theme.UD07_1_ComposeExampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,13 +57,53 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun myApp(modifier: Modifier){
-    Greeting(listaNombres = listOf("Jorge","Pepino"))
+fun welcomeScreen(modifier: Modifier, onContinueClicked: () -> Unit){
+
+    Surface(color = Color.Cyan){
+        Column (modifier = Modifier.fillMaxSize()){
+            Text(text = "Bienvenidos a mi app")
+            Button(
+                modifier = Modifier.padding(20.dp),
+                onClick = onContinueClicked)
+            {
+                Text(text = "Siguiente")
+            }
+        }
+    }
 }
 
 @Composable
-fun Greeting(listaNombres: List<String>, modifier: Modifier = Modifier) {
-    Surface(color = MaterialTheme.colorScheme.primary) {
+fun myApp(modifier: Modifier){
+    var welcomeScreenHasBeenPainted = rememberSaveable {
+        mutableStateOf(false)
+    }
+    if (!welcomeScreenHasBeenPainted.value){
+        welcomeScreen(modifier, onContinueClicked = { welcomeScreenHasBeenPainted.value=true })
+    }else{
+        ListItems()
+    }
+}
+
+@Composable
+fun ListItems(names: List<String> = List(100) {"$it"}){
+    LazyColumn {
+        items(items = names){
+            name -> Greeting(name = name)
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    //po ejer 3
+    var expanded= remember {
+        mutableStateOf(false)
+    }
+    val extraPadding=if (expanded.value) 50.dp else 0.dp
+    Surface(color = MaterialTheme.colorScheme.primary,
+        modifier=Modifier.padding(0.dp,60.dp)) {
+
+        // PRIMEIRO EJERCICIO
         /*
         Text(
             text = stringResource(id = R.string.app_name),
@@ -72,6 +120,9 @@ fun Greeting(listaNombres: List<String>, modifier: Modifier = Modifier) {
                 )
             )
         )*/
+
+        //SEGUNDO EJERCICIO
+        /*
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
@@ -97,6 +148,19 @@ fun Greeting(listaNombres: List<String>, modifier: Modifier = Modifier) {
             }
             ElevatedButton(onClick = { println("ola") }) {
                 Text(text = "Show more")
+            }
+        }*/
+
+        // TERCEIRO EJERCICIO
+        Row(modifier=Modifier.padding(extraPadding)) {
+            Column(modifier=Modifier.weight(1f)) {
+                Text(text = "Hello, ")
+                Text(text = name)
+            }
+            ElevatedButton(onClick = {
+                expanded.value=!expanded.value
+            }) {
+                Text(if (expanded.value) "Show less" else "Show more")
             }
         }
 
