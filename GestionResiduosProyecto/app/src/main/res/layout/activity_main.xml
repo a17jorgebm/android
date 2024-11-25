@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical"
+    >
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true"/>
+
+
+    <!-- hai que recuperar a navegavilidad en mainactivity pa que cambie de venana payaso -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menu_bottom_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:menu="@menu/menu_bottom"/>
+
+
+</LinearLayout>
