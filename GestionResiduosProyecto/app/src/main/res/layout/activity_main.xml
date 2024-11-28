@@ -19,7 +19,6 @@
         app:defaultNavHost="true"/>
 
 
-    <!-- hai que recuperar a navegavilidad en mainactivity pa que cambie de venana payaso -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu_bottom_main"
         android:layout_width="match_parent"
