@@ -63,6 +63,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.proyectoresiduoscompose.ui.theme.ProyectoResiduosComposeTheme
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
 
 
 val PoppinsFamily = FontFamily(
@@ -356,38 +362,173 @@ fun HomeScreen(
 fun RouteDestinationsScreen(
     navController: NavController
 ){
+    var selectedBottomNavItem by remember {
+        mutableIntStateOf(0)
+    }
+
     Scaffold(
+        containerColor = Color.Yellow, //para que o menu estea flotando
         topBar = {
             Row(
-                modifier = Modifier
+                Modifier
+                    .background(Color(0xFF1D1D1D))
+                    .padding(16.dp)
                     .fillMaxWidth()
-                    .height(56.dp)
-                    .padding(16.dp,5.dp)
-                    .background(MaterialTheme.colorScheme.primaryContainer),
-                verticalAlignment = Alignment.CenterVertically
+                    .height(40.dp)
             ) {
-                Row {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
-                        contentDescription = "Atrás",
-                        modifier = Modifier.clickable {
-                            navController.popBackStack()
-                        })
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().weight(1f),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        IconButton(
+                            onClick = {
+                                navController.popBackStack()
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
+                                contentDescription = "Atrás",
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .aspectRatio(1f),
+                                tint = Color.White
+                            )
+                        }
+                        Image(
+                            painter = painterResource(id = R.drawable.perfil),
+                            contentDescription = "Foto de perfil",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f)
+                                .clip(CircleShape)
+                        )
+                        Text(
+                            text = "Juana",
+                            color = Color.White
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .fillMaxHeight()
+                            .aspectRatio(1f)
+                            .background(Color(0xFF292928))
+                            .padding(8.dp),
+                        contentAlignment = Alignment.Center
+                    ){
+                        IconButton(
+                            onClick = {  }
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.campana),
+                                contentDescription = "Notifications",
+                                tint = Color.White
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        bottomBar = {
+            NavigationBar(
+                containerColor = Color(0xFF292928),
+                modifier = Modifier
+                    .background(Color(0xFF292928))
+            ) {
+                bottomNavItems.forEachIndexed{i, item ->
+                    NavigationBarItem(
+                        selected = i==selectedBottomNavItem,
+                        onClick = {
+                            selectedBottomNavItem=i
+                            navController.navigate(item.route)
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = item.unselectedIcon,
+                                contentDescription = item.title,
+                                tint = Color.White
+                            )
+                        }
+                    )
                 }
             }
         }
     ) { paddingValues ->
         Column(
             modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(Color(0xFF1D1D1D))
+                .padding(16.dp)
+            ,
+            verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
-            Text(
-                text = "Eiiii",
-                color = Color.Black
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.End
+                ) {
+                    Text(
+                        text = "Jueves 17",
+                        color = Color.White
+                    )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.lorry),
+                            contentDescription = "Camión",
+                            modifier = Modifier
+                                .height(25.dp)
+                                .aspectRatio(1f),
+                            tint = Color.White
+                        )
+                        Text(
+                            text = "0628BNY",
+                            color = Color.White
+                        )
+                    }
+
+                }
+            }
+            Row(
+                modifier = Modifier
+                    //.padding(16.dp) //margen (ao final fixeno co contedor principal)
+                    .fillMaxWidth()
+                    .height(120.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable {
+                        navController.navigate("RouteDestinationsScreen")
+                    }
+                //.padding(0.dp) //padding interior (0 para que a imagen ocupe todo)
+            ) {
+                val singapore = LatLng(1.35, 103.87)
+                val cameraPositionState = rememberCameraPositionState {
+                    position = CameraPosition.fromLatLngZoom(singapore, 10f)
+                }
+                GoogleMap(
+                    modifier = Modifier.fillMaxSize(),
+                    cameraPositionState = cameraPositionState
+                ){
+                    Marker(
+                        state = MarkerState(position = singapore),
+                        title = "Singapore",
+                        snippet = "Marker in Singapore"
+                    )
+                }
+            }
         }
+
     }
 }
