@@ -63,6 +63,7 @@ class NotesViewModel(
                 }
             }
             is NotesEvent.SortNotes -> {
+                println("ordenando")
                 isSortedByDateAdded.value = !isSortedByDateAdded.value
             }
         }

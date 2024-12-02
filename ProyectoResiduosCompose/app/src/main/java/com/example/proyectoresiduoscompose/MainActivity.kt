@@ -21,8 +21,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
@@ -466,7 +468,8 @@ fun RouteDestinationsScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color(0xFF1D1D1D))
-                .padding(16.dp)
+                .padding(16.dp,16.dp,16.dp,0.dp)
+                .verticalScroll(rememberScrollState())
             ,
             verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
@@ -526,6 +529,223 @@ fun RouteDestinationsScreen(
                         title = "Singapore",
                         snippet = "Marker in Singapore"
                     )
+                }
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "7 clientes",
+                    color = Color.White,
+                    fontSize = 14.sp
+                )
+            }
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier
+                    .padding(0.dp,0.dp,0.dp,16.dp)
+            )
+            {
+                Row {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .padding(0.dp)
+                            .background(Color(0xFF292928))
+                            .padding(16.dp)
+                            .weight(1f)
+                            .height(130.dp)
+                    ){
+                        Column(
+                            verticalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                        ) {
+                            Text(
+                                text = "Talleres Juan Antornio SL Sociedad anonima",
+                                color = Color.White
+                            )
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.eye),
+                                        contentDescription = "Observations",
+                                        modifier = Modifier.height(20.dp),
+                                        tint = Color.White
+                                    )
+                                    Text(
+                                        text = "Ir entre las 10 y las 12",
+                                        color = Color.White,
+                                        fontSize = 12.sp
+                                    )
+                                }
+                                Icon(
+                                    painter = painterResource(id = R.drawable.bidon_aceite),
+                                    contentDescription = "Aceite usado",
+                                    tint = Color.White,
+                                    modifier = Modifier
+                                        .height(20.dp)
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(20.dp))
+                                .padding(0.dp)
+                                .background(Color(0xFFD8FF7E))
+                                .padding(30.dp,5.dp)
+                                .align(Alignment.BottomEnd)
+                            ,
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Ver",
+                                color = Color.Black,
+                                fontSize = 14.sp
+                            )
+                        }
+                    }
+                }
+                Row {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .padding(0.dp)
+                            .background(Color(0xFF292928))
+                            .padding(16.dp)
+                            .weight(1f)
+                            .height(130.dp)
+                    ){
+                        Column(
+                            verticalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                        ) {
+                            Text(
+                                text = "Talleres Juan Antornio SL Sociedad anonima",
+                                color = Color.White
+                            )
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.eye),
+                                        contentDescription = "Observations",
+                                        modifier = Modifier.height(20.dp),
+                                        tint = Color.White
+                                    )
+                                    Text(
+                                        text = "Ir entre las 10 y las 12",
+                                        color = Color.White,
+                                        fontSize = 12.sp
+                                    )
+                                }
+                                Icon(
+                                    painter = painterResource(id = R.drawable.bidon_aceite),
+                                    contentDescription = "Aceite usado",
+                                    tint = Color.White,
+                                    modifier = Modifier
+                                        .height(20.dp)
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(20.dp))
+                                .padding(0.dp)
+                                .background(Color(0xFFD8FF7E))
+                                .padding(30.dp,5.dp)
+                                .align(Alignment.BottomEnd)
+                            ,
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Ver",
+                                color = Color.Black,
+                                fontSize = 14.sp
+                            )
+                        }
+                    }
+                }
+                Row {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .padding(0.dp)
+                            .background(Color(0xFF292928))
+                            .padding(16.dp)
+                            .weight(1f)
+                            .height(130.dp)
+                    ){
+                        Column(
+                            verticalArrangement = Arrangement.SpaceBetween,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                        ) {
+                            Text(
+                                text = "Talleres Juan Antornio SL Sociedad anonima",
+                                color = Color.White
+                            )
+                            Column(
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                            ) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.eye),
+                                        contentDescription = "Observations",
+                                        modifier = Modifier.height(20.dp),
+                                        tint = Color.White
+                                    )
+                                    Text(
+                                        text = "Ir entre las 10 y las 12",
+                                        color = Color.White,
+                                        fontSize = 12.sp
+                                    )
+                                }
+                                Icon(
+                                    painter = painterResource(id = R.drawable.bidon_aceite),
+                                    contentDescription = "Aceite usado",
+                                    tint = Color.White,
+                                    modifier = Modifier
+                                        .height(20.dp)
+                                )
+                            }
+                        }
+                        Row(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(20.dp))
+                                .padding(0.dp)
+                                .background(Color(0xFFD8FF7E))
+                                .padding(30.dp,5.dp)
+                                .align(Alignment.BottomEnd)
+                            ,
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Ver",
+                                color = Color.Black,
+                                fontSize = 14.sp
+                            )
+                        }
+                    }
                 }
             }
         }
