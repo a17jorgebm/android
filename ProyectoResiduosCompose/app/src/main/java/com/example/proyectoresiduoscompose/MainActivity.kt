@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -200,7 +201,8 @@ fun HomeScreen(
             NavigationBar(
                 containerColor = Color(0xFF292928),
                 modifier = Modifier
-                    .background(Color(0xFF292928))
+                    .background(Color(0xFF292928)),
+
             ) {
                 bottomNavItems.forEachIndexed{i, item ->
                     NavigationBarItem(
@@ -213,7 +215,10 @@ fun HomeScreen(
                             Icon(
                                 imageVector = item.unselectedIcon,
                                 contentDescription = item.title,
-                                tint = Color.White
+                                tint = Color.White,
+                                modifier = Modifier
+                                    .height(30.dp)
+                                    .aspectRatio(1f)
                             )
                         }
                     )
@@ -549,73 +554,124 @@ fun RouteDestinationsScreen(
                     .padding(0.dp,0.dp,0.dp,16.dp)
             )
             {
-                Row {
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(10.dp))
-                            .padding(0.dp)
-                            .background(Color(0xFF292928))
-                            .padding(16.dp)
-                            .weight(1f)
-                            .height(130.dp)
+                repeat(7){
+                    Row(
+                        modifier = Modifier.height(140.dp)
                     ){
-                        Column(
-                            verticalArrangement = Arrangement.SpaceBetween,
+                        //indicador de estado
+                        Box(
                             modifier = Modifier
                                 .fillMaxHeight()
+                                .padding(0.dp,0.dp,10.dp,0.dp)
                         ) {
-                            Text(
-                                text = "Talleres Juan Antornio SL Sociedad anonima",
-                                color = Color.White
+                            Box(
+                                modifier = Modifier
+                                    .padding(0.dp,20.dp,0.dp,0.dp)
+                                    .clip(CircleShape)
+                                    .background(Color(0xFFD8FF7E))
+                                    .height(15.dp)
+                                    .aspectRatio(1f)
+                                    .align(Alignment.TopCenter)
+                                    .padding(0.dp)
                             )
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxHeight() // 140+16+15 (heightContenedor+gap+padding)
+                                    .width(3.dp)
+                                    .offset(0.dp,35.dp) //15+20
+                                    .align(Alignment.TopCenter)
+                                    .background(Color(0xFFD8FF7E))
+                            )
+                        }
+
+                        //información de la recogida
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(10.dp))
+                                .padding(0.dp)
+                                .background(Color(0xFF292928))
+                                .padding(16.dp)
+                                .weight(1f)
+                        ){
                             Column(
-                                verticalArrangement = Arrangement.spacedBy(10.dp)
+                                verticalArrangement = Arrangement.SpaceBetween,
+                                modifier = Modifier
+                                    .fillMaxHeight()
                             ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                Text(
+                                    text = "Talleres Juan Antornio SL Sociedad anonima",
+                                    color = Color.White
+                                )
+                                Column(
+                                    verticalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.eye),
+                                            contentDescription = "Observations",
+                                            modifier = Modifier.height(20.dp),
+                                            tint = Color(0xC6FFFFFF)
+                                        )
+                                        Text(
+                                            text = "Ir entre las 10 y las 12",
+                                            color = Color(0xC6FFFFFF),
+                                            fontSize = 12.sp
+                                        )
+                                    }
                                     Icon(
-                                        painter = painterResource(id = R.drawable.eye),
-                                        contentDescription = "Observations",
-                                        modifier = Modifier.height(20.dp),
-                                        tint = Color.White
-                                    )
-                                    Text(
-                                        text = "Ir entre las 10 y las 12",
-                                        color = Color.White,
-                                        fontSize = 12.sp
+                                        painter = painterResource(id = R.drawable.bidon_aceite),
+                                        contentDescription = "Aceite usado",
+                                        tint = Color(0xC6FFFFFF),
+                                        modifier = Modifier
+                                            .height(20.dp)
                                     )
                                 }
-                                Icon(
-                                    painter = painterResource(id = R.drawable.bidon_aceite),
-                                    contentDescription = "Aceite usado",
-                                    tint = Color.White,
-                                    modifier = Modifier
-                                        .height(20.dp)
+                            }
+                            Row(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .padding(0.dp)
+                                    .background(Color(0xFFD8FF7E))
+                                    .padding(30.dp,5.dp)
+                                    .align(Alignment.BottomEnd)
+                                ,
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    text = "Ver",
+                                    color = Color.Black,
+                                    fontSize = 14.sp
                                 )
                             }
                         }
-                        Row(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(20.dp))
-                                .padding(0.dp)
-                                .background(Color(0xFFD8FF7E))
-                                .padding(30.dp,5.dp)
-                                .align(Alignment.BottomEnd)
-                            ,
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = "Ver",
-                                color = Color.Black,
-                                fontSize = 14.sp
-                            )
-                        }
                     }
                 }
-                Row {
+                Row(
+                    modifier = Modifier.height(140.dp)
+                ){
+                    //indicador de estado
+                    Box(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .padding(0.dp,0.dp,10.dp,0.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .padding(0.dp,20.dp,0.dp,0.dp)
+                                .clip(CircleShape)
+                                .background(Color(0xFF7F7F7F))
+                                .height(15.dp)
+                                .aspectRatio(1f)
+                                .align(Alignment.TopCenter)
+                                .padding(0.dp)
+                        )
+                    }
+
+                    //información de la recogida
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(10.dp))
@@ -623,73 +679,6 @@ fun RouteDestinationsScreen(
                             .background(Color(0xFF292928))
                             .padding(16.dp)
                             .weight(1f)
-                            .height(130.dp)
-                    ){
-                        Column(
-                            verticalArrangement = Arrangement.SpaceBetween,
-                            modifier = Modifier
-                                .fillMaxHeight()
-                        ) {
-                            Text(
-                                text = "Talleres Juan Antornio SL Sociedad anonima",
-                                color = Color.White
-                            )
-                            Column(
-                                verticalArrangement = Arrangement.spacedBy(10.dp)
-                            ) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                                ) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.eye),
-                                        contentDescription = "Observations",
-                                        modifier = Modifier.height(20.dp),
-                                        tint = Color.White
-                                    )
-                                    Text(
-                                        text = "Ir entre las 10 y las 12",
-                                        color = Color.White,
-                                        fontSize = 12.sp
-                                    )
-                                }
-                                Icon(
-                                    painter = painterResource(id = R.drawable.bidon_aceite),
-                                    contentDescription = "Aceite usado",
-                                    tint = Color.White,
-                                    modifier = Modifier
-                                        .height(20.dp)
-                                )
-                            }
-                        }
-                        Row(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(20.dp))
-                                .padding(0.dp)
-                                .background(Color(0xFFD8FF7E))
-                                .padding(30.dp,5.dp)
-                                .align(Alignment.BottomEnd)
-                            ,
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                text = "Ver",
-                                color = Color.Black,
-                                fontSize = 14.sp
-                            )
-                        }
-                    }
-                }
-                Row {
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(10.dp))
-                            .padding(0.dp)
-                            .background(Color(0xFF292928))
-                            .padding(16.dp)
-                            .weight(1f)
-                            .height(130.dp)
                     ){
                         Column(
                             verticalArrangement = Arrangement.SpaceBetween,
