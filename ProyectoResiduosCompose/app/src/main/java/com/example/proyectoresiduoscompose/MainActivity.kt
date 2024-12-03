@@ -32,6 +32,7 @@ import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -101,6 +102,12 @@ class MainActivity : ComponentActivity() {
 
                         composable("RouteDestinationsScreen"){
                             RouteDestinationsScreen(
+                                navController=navController
+                            )
+                        }
+
+                        composable("DestinationScreen"){
+                            DestinationScreen(
                                 navController=navController
                             )
                         }
@@ -592,6 +599,9 @@ fun RouteDestinationsScreen(
                                 .background(Color(0xFF292928))
                                 .padding(16.dp)
                                 .weight(1f)
+                                .clickable {
+                                    navController.navigate("DestinationScreen")
+                                }
                         ){
                             Column(
                                 verticalArrangement = Arrangement.SpaceBetween,
@@ -735,6 +745,175 @@ fun RouteDestinationsScreen(
                             )
                         }
                     }
+                }
+            }
+        }
+
+    }
+}
+
+@Composable
+fun DestinationScreen(
+    navController: NavController
+){
+    var selectedBottomNavItem by remember {
+        mutableIntStateOf(0)
+    }
+
+    Scaffold(
+        containerColor = Color.Yellow, //para que o menu estea flotando
+        topBar = {
+            Row(
+                Modifier
+                    .background(Color(0xFF1D1D1D))
+                    .padding(16.dp)
+                    .fillMaxWidth()
+                    .height(40.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().weight(1f),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        IconButton(
+                            onClick = {
+                                navController.popBackStack()
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowLeft,
+                                contentDescription = "Atrás",
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .aspectRatio(1f),
+                                tint = Color.White
+                            )
+                        }
+                        Image(
+                            painter = painterResource(id = R.drawable.perfil),
+                            contentDescription = "Foto de perfil",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f)
+                                .clip(CircleShape)
+                        )
+                        Text(
+                            text = "Juana",
+                            color = Color.White
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .fillMaxHeight()
+                            .aspectRatio(1f)
+                            .background(Color(0xFF292928))
+                            .padding(8.dp),
+                        contentAlignment = Alignment.Center
+                    ){
+                        IconButton(
+                            onClick = {  }
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.campana),
+                                contentDescription = "Notifications",
+                                tint = Color.White
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        bottomBar = {
+            NavigationBar(
+                containerColor = Color(0xFF292928),
+                modifier = Modifier
+                    .background(Color(0xFF292928))
+            ) {
+                bottomNavItems.forEachIndexed{i, item ->
+                    NavigationBarItem(
+                        selected = i==selectedBottomNavItem,
+                        onClick = {
+                            selectedBottomNavItem=i
+                            navController.navigate(item.route)
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = item.unselectedIcon,
+                                contentDescription = item.title,
+                                tint = Color.White
+                            )
+                        }
+                    )
+                }
+            }
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .background(Color(0xFF1D1D1D))
+                .padding(16.dp,16.dp,16.dp,0.dp)
+                .verticalScroll(rememberScrollState())
+            ,
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                ) {
+                    Text(
+                        text = "Talleres Juan Antornio SL Sociedad anonima",
+                        color = Color.White,
+                        modifier = Modifier
+                            .weight(1f)
+                    )
+                    Box(
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .clip(RoundedCornerShape(15.dp))
+                            .background(Color(0xFFD8FF7E))
+                            .padding(15.dp,10.dp)
+                            .clickable {
+                                //cousa que facer
+                            },
+                        contentAlignment = Alignment.Center
+                    ){
+                        Text("Ver cliente")
+                    }
+                }
+                Text(
+                    text = "Información del productor",
+                    fontSize = 14.sp,
+                    color = Color(0xC6FFFFFF)
+                )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(5.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.location),
+                        contentDescription = "Ubicación",
+                        tint = Color.White,
+                    )
+                    Text(
+                        text = "Rúa Antonio Amigo, 8, 15860 Santa Comba, A Coruña",
+                        modifier = Modifier
+                            .weight(1f),
+                        fontSize = 14.sp,
+                        color = Color.White
+                    )
                 }
             }
         }
