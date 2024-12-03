@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -41,6 +42,9 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -883,7 +887,7 @@ fun DestinationScreen(
                     Box(
                         modifier = Modifier
                             .padding(0.dp)
-                            .clip(RoundedCornerShape(15.dp))
+                            .clip(RoundedCornerShape(20.dp))
                             .background(Color(0xFFD8FF7E))
                             .padding(15.dp,10.dp)
                             .clickable {
@@ -914,6 +918,215 @@ fun DestinationScreen(
                         fontSize = 14.sp,
                         color = Color.White
                     )
+                }
+            }
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(15.dp,15.dp,15.dp,40.dp)
+            ) {
+                Text(
+                    text = "Residuos a recoger",
+                    fontSize = 14.sp,
+                    color = Color(0xC6FFFFFF),
+                    modifier = Modifier
+                        .padding(0.dp,0.dp,0.dp,10.dp)
+                )
+
+                // residuos
+                Column{
+                    Row(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFF292928))
+                            .fillMaxWidth()
+                            .height(80.dp)
+                            .padding(15.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.bidon_aceite),
+                            contentDescription = "Oil",
+                            modifier = Modifier
+                                .fillMaxHeight(),
+                            tint = Color(0xFF7F7F7F)
+                        )
+                        Column(
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(15.dp,0.dp,0.dp,0.dp)
+                                .fillMaxHeight()
+                            ,
+                            verticalArrangement = Arrangement.SpaceAround
+                        ) {
+                            Text(
+                                text = "Aceite usado",
+                                fontSize = 14.sp,
+                                color = Color.White
+                            )
+                            Text(
+                                text = "Cantidad: 900l",
+                                fontSize = 14.sp,
+                                color = Color(0xC6FFFFFF)
+                            )
+                        }
+                        Box(
+                            modifier = Modifier
+                                .padding(0.dp)
+                                .clip(RoundedCornerShape(20.dp))
+                                .background(Color(0xFF7F7F7F))
+                                .padding(25.dp,0.dp)
+                            ,
+                            contentAlignment = Alignment.Center
+                        ){
+                            Text(
+                                text = "Ver",
+                                fontSize = 14.sp
+                            )
+                        }
+                    }
+                }
+
+                //añadir residuo
+                Row(
+                    modifier = Modifier
+                        .padding(0.dp,25.dp,0.dp,0.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color(0xFFD8FF7E))
+                        .padding(30.dp,0.dp)
+                        .height(50.dp)
+                        .clickable {
+                            //cousa que facer
+                        },
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    Icon(
+                        painter = painterResource(id = R.drawable.plus),
+                        contentDescription = "Plus",
+                        modifier = Modifier
+                            .padding(0.dp,0.dp,10.dp,0.dp)
+                    )
+                    Text(
+                        text = "Añadir residuo",
+                        fontSize = 14.sp
+                    )
+                }
+            }
+
+            //nota para albaran
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Nota para el albarán",
+                    fontSize = 14.sp,
+                    color = Color(0xC6FFFFFF)
+                )
+
+                //campo de texto (cambiar color pero é unha puta liada)
+                var textoAlbaran by remember { mutableStateOf("") }
+                TextField(
+                    value = textoAlbaran,
+                    onValueChange = { textoAlbaran = it},
+                    modifier = Modifier
+                        .padding(0.dp,10.dp,0.dp,0.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.Black)
+                        .fillMaxWidth()
+                        .height(150.dp)
+                )
+            }
+
+            //Observaciones
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Observaciones",
+                    fontSize = 14.sp,
+                    color = Color(0xC6FFFFFF)
+                )
+
+                //campo de texto (cambiar color pero é unha puta liada)
+                var textoAlbaran by remember { mutableStateOf("") }
+                TextField(
+                    value = textoAlbaran,
+                    onValueChange = { textoAlbaran = it},
+                    modifier = Modifier
+                        .padding(0.dp,10.dp,0.dp,0.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.Black)
+                        .fillMaxWidth()
+                        .height(150.dp)
+                )
+            }
+
+            //Fotografías
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    text = "Fotografías",
+                    fontSize = 14.sp,
+                    color = Color(0xC6FFFFFF),
+                )
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    //añadir foto
+                    Row(
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(10.dp))
+                            .padding(0.dp)
+                            .background(Color(0xFFDCF2AC))
+                            .fillMaxHeight()
+                            .padding(0.dp,5.dp)
+                        ,
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.camera),
+                            contentDescription = "New photo",
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f)
+                                .padding(0.dp,0.dp,15.dp,0.dp)
+                        )
+                        Text(
+                            text = "Añadir fotografía"
+                        )
+                    }
+                    //ver fotos
+                    Box(
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .fillMaxHeight()
+                            .background(Color(0xFF7F7F7F))
+                            .padding(15.dp),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Icon(
+                            painter = painterResource(id = R.drawable.gallery),
+                            contentDescription = "Galeria",
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f)
+                        )
+                    }
                 }
             }
         }
