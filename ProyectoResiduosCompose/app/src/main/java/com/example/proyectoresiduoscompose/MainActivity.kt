@@ -36,6 +36,7 @@ import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -60,6 +61,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -1027,15 +1029,17 @@ fun DestinationScreen(
 
                 //campo de texto (cambiar color pero é unha puta liada)
                 var textoAlbaran by remember { mutableStateOf("") }
-                TextField(
+                BasicTextField(
                     value = textoAlbaran,
                     onValueChange = { textoAlbaran = it},
                     modifier = Modifier
                         .padding(0.dp,10.dp,0.dp,0.dp)
                         .clip(RoundedCornerShape(10.dp))
-                        .background(Color.Black)
+                        .background(Color(0xFF292928))
                         .fillMaxWidth()
                         .height(150.dp)
+                        .padding(10.dp),
+                    textStyle = LocalTextStyle.current.copy(color = Color.White)
                 )
             }
 
@@ -1052,16 +1056,17 @@ fun DestinationScreen(
                 )
 
                 //campo de texto (cambiar color pero é unha puta liada)
-                var textoAlbaran by remember { mutableStateOf("") }
-                TextField(
-                    value = textoAlbaran,
-                    onValueChange = { textoAlbaran = it},
+                var textoObservaciones by remember { mutableStateOf("") }
+                BasicTextField(
+                    value = textoObservaciones,
+                    onValueChange = { textoObservaciones = it},
                     modifier = Modifier
                         .padding(0.dp,10.dp,0.dp,0.dp)
                         .clip(RoundedCornerShape(10.dp))
-                        .background(Color.Black)
+                        .background(Color(0xFF292928))
                         .fillMaxWidth()
-                        .height(150.dp)
+                        .height(150.dp),
+                    textStyle = LocalTextStyle.current.copy(color = Color.White),
                 )
             }
 
@@ -1075,7 +1080,7 @@ fun DestinationScreen(
                 Text(
                     text = "Fotografías",
                     fontSize = 14.sp,
-                    color = Color(0xC6FFFFFF),
+                    color = Color(0xC6FFFFFF)
                 )
 
                 Row(
@@ -1101,7 +1106,7 @@ fun DestinationScreen(
                             painter = painterResource(id = R.drawable.camera),
                             contentDescription = "New photo",
                             modifier = Modifier
-                                .fillMaxHeight()
+                                .height(40.dp)
                                 .aspectRatio(1f)
                                 .padding(0.dp,0.dp,15.dp,0.dp)
                         )
@@ -1123,13 +1128,96 @@ fun DestinationScreen(
                             painter = painterResource(id = R.drawable.gallery),
                             contentDescription = "Galeria",
                             modifier = Modifier
-                                .fillMaxHeight()
+                                .height(40.dp)
                                 .aspectRatio(1f)
                         )
                     }
                 }
             }
-        }
 
+            //Estado de regogida
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(0.dp,40.dp,0.dp,30.dp)
+                ,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    text = "Estado",
+                    fontSize = 14.sp,
+                    color = Color(0xC6FFFFFF)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFFF0625C))
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.cancel),
+                            contentDescription = "Cross",
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f)
+                                .padding(0.dp,0.dp,15.dp,0.dp)
+                        )
+                        Text(
+                            text = "No recogido",
+                        )
+                    }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .weight(1f)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color(0xFF1F515D))
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.person_check),
+                            contentDescription = "Cross",
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f)
+                                .padding(0.dp,0.dp,15.dp,0.dp)
+                        )
+                        Text(
+                            text = "Completar",
+                        )
+                    }
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(90.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color(0xFFD8FF7E))
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.signature),
+                        contentDescription = "Signature",
+                        modifier = Modifier
+                            .height(40.dp)
+                            .aspectRatio(1f)
+                            .padding(0.dp,0.dp,15.dp,0.dp)
+                    )
+                    Text(
+                        text = "Firmar",
+                    )
+                }
+            }
+        }
     }
 }
