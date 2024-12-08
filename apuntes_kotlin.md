@@ -232,3 +232,16 @@ val generarSaludo: (String, Int) -> String = { nombre, edad ->
 ````
 Ainda que se pode usar `return` indicando o contexto no que o ten que facer, NON SE RECOMENDA. As lambdas en kotlin tan feitas pa ser concisas e devolver un valor ao final.
 
+
+# Facer que non se poida ir a pestaña antetior dandolle pa atras
+https://stackoverflow.com/questions/66845899/compose-navigation-remove-previous-composable-from-stack-before-navigating
+
+Apart from screens, back stack contains navigational graphs, and its root is always the first thing in back stack. Our NavHostController contains graph, so by popping its id, you are able to clear your back stack:
+
+````
+popUpTo(navHostController.graph.id)
+````
+For more info, here is the detailed explanation https://medium.com/@banmarkovic/jetpack-compose-clear-back-stack-popbackstack-inclusive-explained-14ee73a29df5
+
+# LiveData, Flows, States
+## States

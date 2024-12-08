@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tasklist.data.Note
 import com.example.tasklist.data.NoteDao
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.WhileSubscribed
@@ -20,6 +21,7 @@ class NotesViewModel(
 
     private val isSortedByDateAdded = MutableStateFlow(true)
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     private var notes =
         isSortedByDateAdded.flatMapLatest { sort ->
             if(sort) {
@@ -29,9 +31,9 @@ class NotesViewModel(
             }
         }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    val _state = MutableStateFlow(NoteState())
+    private val _state = MutableStateFlow(NoteState())
     val state =
-        combine(_state, isSortedByDateAdded, notes) { state, isSortedByDateAdded, notes ->
+        combine(_state, notes) { state, notes ->
             state.copy(
                 notes=notes
             )
