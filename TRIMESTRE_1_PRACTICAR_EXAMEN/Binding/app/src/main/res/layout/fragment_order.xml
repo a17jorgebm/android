@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="30.dp"
+    >
+    <TextView
+        android:id="@+id/text_order_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ola pida comida"
+        />
+
+    <RadioGroup
+        android:id="@+id/radio_group_select_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/option_borguesa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="borguesa"/>
+        <RadioButton
+            android:id="@+id/option_pan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pan"/>
+        <RadioButton
+            android:id="@+id/option_atun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="atun"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enviar"
+        />
+
+
+</LinearLayout>

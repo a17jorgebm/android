@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_game"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30.dp"
+    >
+
+    <TextView
+        android:id="@+id/txt_hidden_word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20.sp"
+        android:text="sdfsf"
+        />
+
+    <LinearLayout
+        android:id="@+id/insert_text_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/txt_remaining_lives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remaining lifes: 4"
+            />
+
+        <EditText
+            android:id="@+id/edit_text_letter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Insert a letter"
+            android:inputType="textShortMessage"
+            />
+
+        <Button
+            android:id="@+id/btn_check_letter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comprobar"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(actionBar)
 
         //pillamos drawer layout
+
         val drawerLayout=findViewById<DrawerLayout>(R.id.drawerMain)
 
         val navegadorFragmentos= supportFragmentManager.findFragmentById(R.id.container_fragment) as NavHostFragment
